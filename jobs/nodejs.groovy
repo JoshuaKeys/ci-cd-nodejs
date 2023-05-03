@@ -4,8 +4,8 @@ job('NodeJS example') {
         node / gitConfigEmail('joshua.oguma@outlook.com')
     }
 
-    triggers{
-        scm('M/S * * * *')
+    triggers {
+        scm('H/5 * * * *')
     }
 
     wrappers {
