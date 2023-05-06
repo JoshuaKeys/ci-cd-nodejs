@@ -46,7 +46,7 @@ pipeline {
         stage('Test') {
             steps {
                 retry(3) {
-                    echo 'Testing... $secret'
+                    echo 'Testing... $NAME $secret'
                 }
             }
         }
