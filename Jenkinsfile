@@ -29,6 +29,7 @@ pipeline {
     
     environment {
         NAME='Joshua Oguma'
+        secret = credentials('TEST')
     }
     stages {
         stage('Build') {
@@ -45,14 +46,14 @@ pipeline {
         stage('Test') {
             steps {
                 retry(3) {
-                    echo 'Testing...'
+                    echo 'Testing... $secret'
                 }
             }
         }
 
         stage('Deply') {
             steps {
-                timeout(time: 3, unit: 'SECONDS') {
+                timeout(time: 10, unit: 'SECONDS') {
                     sh 'sleep 5'
                 }
             }
