@@ -42,7 +42,6 @@ pipeline {
         stage('Test') {
             steps {
                 retry(3) {
-                    sh 'I am not going to work'
                     echo 'Testing...'
                 }
             }
@@ -50,7 +49,9 @@ pipeline {
 
         stage('Deply') {
             steps {
-                echo 'Deploying...'
+                timeout(time: 3, unit: 'SECONDS') {
+                    sh 'sleep 5'
+                }
             }
         }
     }
