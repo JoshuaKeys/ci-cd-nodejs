@@ -26,13 +26,16 @@
 
 pipeline {
     agent any
-
+    
+    environment {
+        NAME='Joshua Oguma'
+    }
     stages {
         stage('Build') {
             steps {
                 sh "echo 'My First pipeline'"
                 sh '''
-                    echo "By the way, I can do more stuff in here"
+                    echo "By the way, I can do more stuff in here $NAME"
                     docker ps
                     ls -lah
                 '''
