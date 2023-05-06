@@ -33,6 +33,7 @@ pipeline {
                 sh "echo 'My First pipeline'"
                 sh '''
                     echo "By the way, I can do more stuff in here"
+                    docker ps
                     ls -lah
                 '''
             }
@@ -40,7 +41,10 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo 'Testing...'
+                retry(3) {
+                    sh 'I am not going to work'
+                    echo 'Testing...'
+                }
             }
         }
 
