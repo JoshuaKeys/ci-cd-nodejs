@@ -31,11 +31,7 @@
 // }
 
 pipeline {
-    agent {
-        docker {
-            image 'node:apline'
-        }
-    }
+    agent any
     
     environment {
         NAME='Joshua Oguma'
@@ -71,7 +67,7 @@ pipeline {
 
         stage('Test Node.js') {
             steps {
-                sh 'docker --version'
+                sh 'node --version'
             }
         }
 
