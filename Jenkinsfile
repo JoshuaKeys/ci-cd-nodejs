@@ -39,7 +39,7 @@ pipeline {
     }
     stages {
         stage('linting') {
-            nodejs(nodeJSInstallationName: 'nodejs') {
+            steps {
                 sh 'npm install --only=dev'
                 sh 'npm run lint'
             }
