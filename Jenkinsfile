@@ -18,11 +18,13 @@ pipeline {
 
             }
         }
-        // stage('test') {
-        //     steps {
-        //         sh 'npm test'
-        //     }
-        // }
+        stage('test') {
+            nodejs(nodeJSInstallationName: 'nodejs') {
+                steps {
+                    sh 'npm test'
+                }
+            }
+        }
         stage('Build') {
             steps {
                 sh 'docker build -t keysoutsourcedocker/docker-nodejs-demo .'
