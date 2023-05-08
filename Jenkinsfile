@@ -24,7 +24,13 @@
 //     }
 // }
 
-pipeline {
+node {
+    stage('Preparation') {
+        checkout scm
+    }
+}
+
+/*pipeline {
     agent any
     
     environment {
@@ -59,4 +65,4 @@ pipeline {
             }
         }
     }
-}
+}*/
