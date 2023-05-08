@@ -45,13 +45,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'npm run build'
+                sh 'docker build -t keysoutsourcedocker/docker-nodejs-demo .'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker build -t keysoutsourcedocker/docker-nodejs-demo .'
+                sh 'docker push keysoutsourcedocker/docker-nodejs-demo'
             }
         }
     }
