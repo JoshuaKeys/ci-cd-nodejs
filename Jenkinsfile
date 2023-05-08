@@ -31,9 +31,7 @@
 // }
 
 pipeline {
-    agent {
-        docker { image 'node:alpine'}
-    }
+    agent any
     
     environment {
         NAME='Joshua Oguma'
@@ -53,9 +51,9 @@ pipeline {
             }
         }
 
-        stage('Test Node.js') {
+        stage('Example') {
             steps {
-                sh 'node --version'
+                echo "${params.Greeting}. How are you doing?"
             }
         }
 
@@ -64,6 +62,12 @@ pipeline {
                 retry(3) {
                     sh "echo 'Testing... ' Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 }
+            }
+        }
+
+        stage('Test Node.js') {
+            steps {
+                sh 'docker --version'
             }
         }
 
