@@ -31,7 +31,11 @@
 // }
 
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:apline'
+        }
+    }
     
     environment {
         NAME='Joshua Oguma'
