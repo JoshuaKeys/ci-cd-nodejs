@@ -53,6 +53,7 @@ pipeline {
             steps {
                 retry(3) {
                     sh "echo 'Testing... ' Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                }
             }
         }
 
