@@ -25,7 +25,7 @@
 // }
 
 node {
-    stage('Preparation') {
+    stage('Preparationsss') {
         checkout scm
     }
 }
