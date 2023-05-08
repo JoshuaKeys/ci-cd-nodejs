@@ -52,7 +52,7 @@ pipeline {
         stage('Test') {
             steps {
                 retry(3) {
-                    sh "echo 'Testing... $NAME $secret $BUILD_ID'"
+                    sh "echo 'Testing... $NAME $secret $BUILD_ID $BUILD_NUMBER'"
                 }
             }
         }
