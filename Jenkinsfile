@@ -50,7 +50,10 @@ pipeline {
         }
 
         stage('Deploy') {
-            docker.build('keysoutsourcedocker/docker-nodejs-demo', '.')
+            steps {
+
+                docker.build('keysoutsourcedocker/docker-nodejs-demo', '.')
+            }
         }
     }
 }
