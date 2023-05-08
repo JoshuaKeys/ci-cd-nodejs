@@ -31,7 +31,9 @@
 // }
 
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:alpine'}
+    }
     
     environment {
         NAME='Joshua Oguma'
@@ -51,9 +53,9 @@ pipeline {
             }
         }
 
-        stage('Example') {
+        stage('Test Node.js') {
             steps {
-                echo "${params.Greeting}. How are you doing?"
+                sh 'node --version'
             }
         }
 
