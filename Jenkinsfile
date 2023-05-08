@@ -45,9 +45,15 @@ pipeline {
             steps {
                 sh "echo 'My First pipeline'"
                 sh '''
-                    echo "By the way, I can do more stuff in here ${params.Greeting}"
+                    echo "By the way, I can do more stuff in here "
                     ls -lah
                 '''
+            }
+        }
+
+        stage('Example') {
+            steps {
+                echo "${params.Greeting}. How are you doing?"
             }
         }
 
