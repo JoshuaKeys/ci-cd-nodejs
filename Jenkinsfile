@@ -24,13 +24,13 @@
 //     }
 // }
 
-node {
-    stage('Preparationsss') {
-        checkout scm
-    }
-}
+// node {
+//     stage('Preparationsss') {
+//         checkout scm
+//     }
+// }
 
-/*pipeline {
+pipeline {
     agent any
     
     environment {
@@ -52,7 +52,7 @@ node {
         stage('Test') {
             steps {
                 retry(3) {
-                    sh "echo 'Testing... $NAME $secret'"
+                    sh "echo 'Testing... $NAME $secret $BUILD_ID'"
                 }
             }
         }
@@ -65,4 +65,4 @@ node {
             }
         }
     }
-}*/
+}
