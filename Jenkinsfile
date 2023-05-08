@@ -45,8 +45,7 @@ pipeline {
             steps {
                 sh "echo 'My First pipeline'"
                 sh '''
-                    echo "By the way, I can do more stuff in here $secret"
-                    echo "${params.Greeting}"
+                    echo "By the way, I can do more stuff in here ${params.Greeting}"
                     ls -lah
                 '''
             }
