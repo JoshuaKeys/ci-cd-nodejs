@@ -41,11 +41,12 @@ pipeline {
         stage('Build') {
             steps {
                 sh "echo 'My First pipeline'"
-                sh '''
+                sh """
                     echo "By the way, I can do more stuff in here $secret"
                     docker ps
+                    curl -u ${secret} http://example.com
                     ls -lah
-                '''
+                """
             }
         }
 
