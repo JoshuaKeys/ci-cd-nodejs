@@ -37,6 +37,9 @@ pipeline {
         NAME='Joshua Oguma'
         secret = credentials('TEST')
     }
+    parameters {
+        string(name: 'Greeting', defaultValue: 'Hello World', description: 'Simple parameter added')
+    }
     stages {
         stage('Build') {
             steps {
@@ -44,6 +47,7 @@ pipeline {
                 sh '''
                     echo "By the way, I can do more stuff in here $secret"
                     curl -u ${secret} http://example.com
+                    echo '${params.Greeting}'
                     ls -lah
                 '''
             }
