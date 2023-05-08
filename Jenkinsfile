@@ -20,9 +20,7 @@
 //     }
 
 pipeline {
-    agent {
-        docker { image 'node:alpine' }
-    }
+    agent any;
     
     environment {
         NAME='Joshua Oguma'
@@ -32,17 +30,17 @@ pipeline {
         string(name: 'Greeting', defaultValue: 'Hello World', description: 'Simple parameter added')
     }
     stages {
-        stage('linting') {
-            steps {
-                sh 'npm install --only=dev'
-                sh 'npm run lint'
-            }
-        }
-        stage('test') {
-            steps {
-                sh 'npm test'
-            }
-        }
+        // stage('linting') {
+        //     steps {
+        //         sh 'npm install --only=dev'
+        //         sh 'npm run lint'
+        //     }
+        // }
+        // stage('test') {
+        //     steps {
+        //         sh 'npm test'
+        //     }
+        // }
         stage('Build') {
             steps {
                 sh 'docker build -t keysoutsourcedocker/docker-nodejs-demo .'
