@@ -18,7 +18,6 @@
 //     stage('Preparationsss') {
 //         checkout scm
 //     }
-// }
 
 pipeline {
     agent {
@@ -41,46 +40,17 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'npm install --only=dev'
                 sh 'npm test'
             }
         }
         stage('Build') {
             steps {
-                sh "echo 'My First pipeline'"
-                sh '''
-                    echo "By the way, I can do more stuff in here "
-                    ls -lah
-                '''
+                sh 'npm run build'
             }
         }
 
-        stage('Example') {
-            steps {
-                echo "${params.Greeting}. How are you doing?"
-            }
-        }
-
-        stage('Test') {
-            steps {
-                retry(3) {
-                    sh "echo 'Testing... ' Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                }
-            }
-        }
-
-        stage('Test Node.js') {
-            steps {
-                sh 'node --version'
-            }
-        }
-
-        stage('Deply') {
-            steps {
-                timeout(time: 10, unit: 'SECONDS') {
-                    sh 'sleep 5'
-                }
-            }
+        stage('Deploy') {
+            docker.build('keysoutsourcedocker/docker-nodejs-demo', '.')
         }
     }
 }
