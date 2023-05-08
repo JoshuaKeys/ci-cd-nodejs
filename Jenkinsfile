@@ -19,8 +19,8 @@ pipeline {
             }
         }
         stage('test') {
-            nodejs(nodeJSInstallationName: 'nodejs') {
-                steps {
+            steps {
+                nodejs(nodeJSInstallationName: 'nodejs') {
                     sh 'npm test'
                 }
             }
