@@ -5,12 +5,7 @@
 //         sh "git rev-parse --short HEAD > .git/commit-id"
 //         commit_id = readFile('.git/commit-id').trim()
 //     }
-//     stage('linting') {
-//         nodejs(nodeJSInstallationName: 'nodejs') {
-//             sh 'npm install --only=dev'
-//             sh 'npm run lint'
-//         }
-//     }
+
 //     stage('test') {
 //         nodejs(nodeJSInstallationName: 'nodejs') {
 //             sh 'npm install --only=dev'
@@ -32,7 +27,7 @@
 
 pipeline {
     agent {
-        docker { image 'node:18.16.0-alpine' }
+        docker { image 'node:alpine' }
     }
     
     environment {
@@ -43,6 +38,12 @@ pipeline {
         string(name: 'Greeting', defaultValue: 'Hello World', description: 'Simple parameter added')
     }
     stages {
+        stage('linting') {
+            nodejs(nodeJSInstallationName: 'nodejs') {
+                sh 'npm install --only=dev'
+                sh 'npm run lint'
+            }
+        }
         stage('Build') {
             steps {
                 sh "echo 'My First pipeline'"
