@@ -9,10 +9,16 @@ pipeline {
         string(name: 'Greeting', defaultValue: 'Hello World', description: 'Simple parameter added')
     }
     stages {
-        stage('linting') {
+        stage('setup') {
             steps {
                 nodejs(nodeJSInstallationName: 'nodejs') {
                     sh 'npm install --only=dev'
+                }
+            }
+        }
+        stage('linting') {
+            steps {
+                nodejs(nodeJSInstallationName: 'nodejs') {
                     sh 'npm run lint'
                 }
 
